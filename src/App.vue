@@ -10,27 +10,7 @@
       </nav>
     </div>
     <div class="main-component">
-      <h1 class="body" >La pagina de spiderman</h1>
-      <img src="./assets/spidy.jpg" alt="Spidy" width="360" height="180">
-
-      <table style="width:50%">
-        <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Age</th>
-        </tr>
-        <tr>
-          <td>Jill</td>
-          <td>Smith</td>
-          <td>50</td>
-        </tr>
-        <tr>
-          <td>Eve</td>
-          <td>Jackson</td>
-          <td>94</td>
-        </tr>
-      </table>
-
+      <router-view></router-view>
     </div>
 
     <div class="footer">
@@ -48,34 +28,35 @@
       is_auth: localStorage.getItem('isAuth') || false
       }
     },
-    methods: {},
+    methods: {
+      init: function(){
+        if(this.$route.name != "user"){
+          let username = localStorage.getItem("current_username")
+          this.$router.push({name: "user", params:{username:username}})
+        }
+      },
+
+
+      getBalance: function(){
+        if(this.$route.name != "user_balance"){
+          let username = localStorage.getItem("current_username")
+          this.$router.push({ name:"user_balance",
+            params:{username:username}
+          })
+        }
+      },
+    },
     beforeCreate: function(){
       localStorage.setItem('current_username', 'camilo24')
       localStorage.setItem('isAuth', true)
+      this.$router.push({name:"user",params:{username:'camilo24'}})
     }
   }
 </script>
 
 <style>
-  table {
-    border: 3px solid black;
-    border-collapse: collapse;
-  }
-  th  {
-    border: 2px solid black;
-    border-collapse: collapse;
-    padding: 10px;
-  }
-  td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 10px;
-    text-align: center;
-  }
-
-
   body{
-    margin: 10 10 10 10;
+    margin: 0 0 0 0;
   }
   .header{
     margin: 0%;
