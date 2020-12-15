@@ -1,24 +1,22 @@
 <template>
     <div id="User">
         <h2>Hola <span> {{username}}, </span> ¡Bienvenido!</h2>
+        <div>
+        <form action="https://cajero-api123456.herokuapp.com/user/auth/" method="POST">
+          <div>
+            <label for="username">Ingrese su usuario</label>
+            <input name="username" id="username">
+          </div>
+          <div>
+            <label for="password">Ingrese su contraseña</label>
+            <input name="password" id="password" value="*">
+          </div>
+          <div>
+            <button>Autenticar</button>
+          </div>
+        </form>
+      </div>
     </div>
-
-    <div>
-      <form action="https://cajero-api123456.herokuapp.com/user/auth/" method="POST">
-        <div>
-          <label for="username">Ingrese su usuario</label>
-          <input name="username" id="username">
-        </div>
-        <div>
-          <label for="password">Ingrese su contraseña</label>
-          <input name="password" id="password" value="*">
-        </div>
-        <div>
-          <button>Autenticar</button>
-        </div>
-      </form>
-    </div>
-
 </template>
 
 <script>
