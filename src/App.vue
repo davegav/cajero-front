@@ -46,9 +46,9 @@
       },
     },
     beforeCreate: function(){
-      localStorage.setItem('current_username', 'camilo24')
+      localStorage.setItem('current_username', 'andres18')
       localStorage.setItem('isAuth', true)
-      this.$router.push({name:"user",params:{username:'camilo24'}})
+      this.$router.push({name:"user",params:{username:'andres18'}})
     }
   }
 </script>
