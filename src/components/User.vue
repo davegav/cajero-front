@@ -2,17 +2,17 @@
     <div id="User">
         <h2>Hola <span> {{username}}, </span> ¡Bienvenido!</h2>
         <div>
-        <form >
+        <form v-on:submit.prevent="processAuthUser">
           <div>
             <label for="username">Ingrese su usuario</label>
-            <input name="username" id="username">
+            <input type="text" v-model="user_in.username" placeholder="Username">
           </div>
           <div>
             <label for="password">Ingrese su contraseña</label>
-            <input name="password" id="password" value="*">
+            <input type="password" v-model="user_in.password" placeholder="Password">
           </div>
           <div>
-            <button  v-on:click="checkUser" >Autenticar</button>
+            <button type="submit">Autenticar</button>
           </div>
         </form>
         <h1 id="salida">{{salida}}</h1>
@@ -26,20 +26,21 @@
     name: "User",
     data:function(){
       return {
-        username: "none",
+        user_in: {
+          username: "",
+          password: "",
+        },
         salida: "Esperando autenticacion"
       }
     },
     methods: {
-      async checkUser(){
-        var element = document.getElementById("salida");
-        this.salida = "Procesando!!!";
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-        const {data:response} = await axios.post("https://cajero-api123456.herokuapp.com/user/auth/", {"username": username, "password": password})
-          .then(response => response.json())
-          .then((data) => {
-            this.salida = data;
+      processAuthUser: function(){
+        var self = this
+        axios.post("https://cajero-api123456.herokuapp.com/user/auth/", self.user_in,  {headers: {}})
+          .then((result) => {
+            this.salida = "Autorización exitosa";
+          })
+          .catch((error) => {
           })
       }
     },
