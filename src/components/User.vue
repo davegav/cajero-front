@@ -4,7 +4,8 @@
     <div>
     <hr/>
       <form v-on:submit.prevent="processAuthUser">
-        <div>
+
+        <div class="division">
           <label for="username">Ingrese su usuario</label>
           <input type="text" v-model="user_in.username" placeholder="Username">
         </div>
@@ -19,7 +20,7 @@
       <h1 id="salida">{{salida}}</h1>
     </div>
     <hr/>
-    <div>
+    <div class="division">
       <table>
 
         <tr v-for="user in tabla_salida" v-bind:key="user.nombre">
@@ -79,5 +80,10 @@
   #User span{
     color: crimson;
     font-weight: bold;
+  }
+  .division{
+    width:50%;
+    height:100px;
+    float:left;
   }
 </style>
