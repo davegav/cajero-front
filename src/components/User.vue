@@ -1,23 +1,32 @@
 <template>
-    <div id="User">
-        <h2>Hola <span> {{username}}, </span> ¡Bienvenido!</h2>
+  <div id="User">
+    <h2>Hola <span> {{username}}, </span> ¡Bienvenido!</h2>
+    <div>
+      <form v-on:submit.prevent="processAuthUser">
         <div>
-        <form v-on:submit.prevent="processAuthUser">
-          <div>
-            <label for="username">Ingrese su usuario</label>
-            <input type="text" v-model="user_in.username" placeholder="Username">
-          </div>
-          <div>
-            <label for="password">Ingrese su contraseña</label>
-            <input type="password" v-model="user_in.password" placeholder="Password">
-          </div>
-          <div>
-            <button type="submit">Autenticar</button>
-          </div>
-        </form>
-        <h1 id="salida">{{salida}}</h1>
-      </div>
+          <label for="username">Ingrese su usuario</label>
+          <input type="text" v-model="user_in.username" placeholder="Username">
+        </div>
+        <div>
+          <label for="password">Ingrese su contraseña</label>
+          <input type="password" v-model="user_in.password" placeholder="Password">
+        </div>
+        <div>
+          <button type="submit">Autenticar</button>
+        </div>
+      </form>
+      <h1 id="salida">{{salida}}</h1>
     </div>
+    <div>
+      <table>
+
+        <tr v-for="user in users" v-bind:key="user.nombre">
+          <th v-for="value in user" v-bind:key="value">{{value}}</th>
+        </tr>
+
+      </table>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -30,7 +39,8 @@
           username: "",
           password: "",
         },
-        salida: "Esperando autenticacion"
+        salida: "Esperando autenticacion",
+        tabla_salida: [{nombre:"diego",edad:25,correo:"davegav"}, {nombre:"daniela",edad:23,correo:"dani"}, {nombre:"Carlos",edad:35,correo:"carrr"}]
       }
     },
     methods: {
