@@ -12,7 +12,7 @@
             <input name="password" id="password" value="*">
           </div>
           <div>
-            <button  v-on:click="checkUser()" >Autenticar</button>
+            <button  v-on:click="checkUser" >Autenticar</button>
           </div>
         </form>
         <h1 id="salida">{{salida}}</h1>
@@ -30,9 +30,6 @@
         salida: "Esperando autenticacion"
       }
     },
-    created: function(){
-      this.username = this.$route.params.username
-    },
     methods: {
       async checkUser(){
         var element = document.getElementById("salida");
@@ -42,6 +39,9 @@
         const res = await axios.post("https://cajero-api123456.herokuapp.com/user/auth/", {"username": username, "password": password});
         this.salida  = res.data.json["Autenticado"];
       }
+    },
+    created: function(){
+      this.username = this.$route.params.username
     }
 
   }
