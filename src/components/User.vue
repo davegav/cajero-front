@@ -20,7 +20,7 @@
     <div>
       <table>
 
-        <tr v-for="user in users" v-bind:key="user.nombre">
+        <tr v-for="user in tabla_salida" v-bind:key="user.nombre">
           <th v-for="value in user" v-bind:key="value">{{value}}</th>
         </tr>
 
