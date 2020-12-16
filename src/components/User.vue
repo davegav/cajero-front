@@ -2,6 +2,7 @@
   <div id="User">
     <h2>Hola <span> {{username}}, </span> ¡Bienvenido!</h2>
     <div>
+    <hr/>
       <form v-on:submit.prevent="processAuthUser">
         <div>
           <label for="username">Ingrese su usuario</label>
@@ -17,6 +18,7 @@
       </form>
       <h1 id="salida">{{salida}}</h1>
     </div>
+    <hr/>
     <div>
       <table>
 
