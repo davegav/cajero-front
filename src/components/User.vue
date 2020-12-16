@@ -34,10 +34,11 @@
     },
     methods: {
       async checkUser(){
+        var element = document.getElementById("salida");
+        element.innerHTML = "Procesando!!!";
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
         const res = await axios.post("https://cajero-api123456.herokuapp.com/user/auth/", {"username": username, "password": password});
-        var element = document.getElementById("salida");
         element.innerHTML = res.data.json["Autenticado"];
       }
     }
