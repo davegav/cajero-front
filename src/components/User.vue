@@ -36,9 +36,8 @@
         this.salida = "Procesando!!!";
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
-        const res = await axios.post("https://cajero-api123456.herokuapp.com/user/auth/", {"username": username, "password": password});
-        const dataRes = res.then((response) => response.data)
-        this.salida  = dataRes;
+        const {data:response} = await axios.post("https://cajero-api123456.herokuapp.com/user/auth/", {"username": username, "password": password});
+        this.salida  = response;
       }
     },
     created: function(){
