@@ -41,6 +41,7 @@
             this.salida = "Autorización exitosa";
           })
           .catch((error) => {
+            this.salida = "Usuario no existente";
           })
       }
     },
